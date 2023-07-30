@@ -1,0 +1,4 @@
+id: com.tristanxr.serface
+defaults:
+  Gokai::Context::mode: compositor
+  Gokai::Context::display-backend: wayland

@@ -47,8 +47,8 @@
 
           src = cleanSource self;
 
-          depsListFile = ./deps.json;
-          vendorHash = "sha256-S3+ILWhPp1pMFLfMB7T5wfx+pwrDPHqzzM/tfr+NBso=";
+          #depsListFile = ./deps.json;
+          vendorHash = "sha256-XG2d4QwfeAijwGHUsGkuAzSvxoaV5AQJXe5Plbn0x7o=";
 
           flutterBuildFlags = [
             "--local-engine=${flutter-engine}/src/out/host_release"
@@ -83,6 +83,7 @@
 
           LIBGL_DRIVERS_PATH = "${pkgs.mesa.drivers}/lib/dri";
           VK_LAYER_PATH = "${pkgs.vulkan-validation-layers}/share/vulkan/explicit_layer.d";
+          FLUTTER_ENGINE = "${flutter-engine}/src";
         };
       });
 }

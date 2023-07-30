@@ -30,10 +30,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  gokai:
+    git:
+      url: https://github.com/ExpidusOS/gokai.git
+      ref: dd7d26b605a7ceb2f8b96cd474acd808c1de1cb6
+      path: packages/gokai
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
