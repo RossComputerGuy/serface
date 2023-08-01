@@ -36,6 +36,9 @@ dependencies:
       ref: 01810e28cdc20e0fa3f42ea006f78e6c661f8b21
       path: packages/gokai
   cupertino_icons: ^1.0.2
+  ionicons: ^0.2.2
+  intl: ^0.18.1
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:

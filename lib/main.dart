@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:gokai/gokai.dart';
+import 'package:provider/provider.dart';
+
+import 'models.dart';
+import 'views.dart';
+import 'widgets.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const SerfaceApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SerfaceApp extends StatelessWidget {
+  const SerfaceApp({super.key});
 
   ThemeData _buildTheme({Brightness brightness = Brightness.light})
     => ThemeData(
@@ -18,60 +24,27 @@ class MyApp extends StatelessWidget {
     );
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: _buildTheme(),
-      darkTheme: _buildTheme(brightness: Brightness.dark),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+  Widget build(BuildContext context) =>
+    FutureBuilder(
+      future: GokaiContext().init(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (context) => BatteryModel(snapshot.data!)),
+              Provider(create: (context) => snapshot.data!),
+            ],
+            child: MaterialApp(
+              title: 'Serface',
+              theme: _buildTheme(),
+              darkTheme: _buildTheme(brightness: Brightness.dark),
+              routes: {
+                '/': (_) => const SerfaceHomeView(),
+              },
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+          );
+        }
+        return const SizedBox();
+      },
     );
-  }
 }
