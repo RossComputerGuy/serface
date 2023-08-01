@@ -35,6 +35,11 @@ dependencies:
       url: https://github.com/ExpidusOS/gokai.git
       ref: 01810e28cdc20e0fa3f42ea006f78e6c661f8b21
       path: packages/gokai
+  nextcloud:
+    git:
+      url: https://github.com/provokateurin/nextcloud-neon
+      path: packages/nextcloud
+      ref: f6f3597c6396a9a2e29f1dc431815a0ff2e16c64
   cupertino_icons: ^1.0.2
   ionicons: ^0.2.2
   intl: ^0.18.1
@@ -45,6 +50,13 @@ dependencies:
   path: ^1.8.3
   file: ^6.1.4
   nm: ^0.5.0
+
+dependency_overrides:
+  dynamite_runtime:
+    git:
+      url: https://github.com/provokateurin/nextcloud-neon
+      path: packages/dynamite/dynamite_runtime
+      ref: f6f3597c6396a9a2e29f1dc431815a0ff2e16c64
 
 dev_dependencies:
   flutter_test:

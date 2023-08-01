@@ -5,7 +5,10 @@ enum SerfaceSettings<T> {
   adminCode('0000'),
   theme('system'),
   screenTimeLock(30),
-  screenTimeUnlock(30);
+  screenTimeUnlock(30),
+  nextcloudUrl('https://nextcloud.tristanxr.com'),
+  nextcloudUser(''),
+  nextcloudPassword('');
 
   const SerfaceSettings(this.defaultValue);
 

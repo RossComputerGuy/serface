@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
+import 'package:nextcloud/nextcloud.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:serface/apps.dart';
 import 'package:serface/app.dart';
@@ -126,6 +127,14 @@ class _SerfaceSettingsViewState extends State<SerfaceSettingsView> {
                   }
                 });
               },
+            ),
+            ListTile(
+              leading: Icon(Ionicons.person),
+              title: Text('Set Nextcloud login'),
+              onTap: () => showDialog(
+                context: context,
+                builder: (context) => const NextcloudLogin(),
+              ),
             ),
           ].map(
             (child) => Padding(
