@@ -4,12 +4,11 @@ packages:
   arena_listener:
     dependency: transitive
     description:
-      path: "."
-      ref: "fix/flutter-3.10.5"
-      resolved-ref: f69583258ac60fa11bb284fae0e1320a9cf5158e
-      url: "https://github.com/ExpidusOS/arena_listener"
-    source: git
-    version: "0.0.1"
+      name: arena_listener
+      sha256: fa0238160909432d5b6e975b9c5bd4e8dd79e1019a7b5d658f1a909d320fdb75
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   async:
     dependency: transitive
     description:
@@ -101,8 +100,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/gokai"
-      ref: dd7d26b605a7ceb2f8b96cd474acd808c1de1cb6
-      resolved-ref: dd7d26b605a7ceb2f8b96cd474acd808c1de1cb6
+      ref: "01810e28cdc20e0fa3f42ea006f78e6c661f8b21"
+      resolved-ref: "01810e28cdc20e0fa3f42ea006f78e6c661f8b21"
       url: "https://github.com/ExpidusOS/gokai.git"
     source: git
     version: "0.0.1"

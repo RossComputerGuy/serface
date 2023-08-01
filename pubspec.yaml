@@ -33,7 +33,7 @@ dependencies:
   gokai:
     git:
       url: https://github.com/ExpidusOS/gokai.git
-      ref: dd7d26b605a7ceb2f8b96cd474acd808c1de1cb6
+      ref: 01810e28cdc20e0fa3f42ea006f78e6c661f8b21
       path: packages/gokai
   cupertino_icons: ^1.0.2
 
