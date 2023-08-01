@@ -27,6 +27,11 @@ enum SerfaceApplications {
   NavigationRailDestination buildNavigation(BuildContext context) =>
     NavigationRailDestination(
       icon: Icon(icon, size: 60),
+      selectedIcon: Icon(
+        icon,
+        size: 60,
+        color: Colors.blue,
+      ),
       label: Text(name),
     );
 

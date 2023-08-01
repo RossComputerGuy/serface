@@ -48,6 +48,11 @@ class SerfaceNavigation extends StatelessWidget {
       destinations: [
         NavigationRailDestination(
           icon: Icon(Ionicons.home, size: 60),
+          selectedIcon: Icon(
+            Ionicons.home,
+            size: 60,
+            color: Colors.blue,
+          ),
           label: Text('Home'),
         )
       ]..addAll(SerfaceApplications.values.map(

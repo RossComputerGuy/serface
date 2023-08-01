@@ -32,15 +32,10 @@ class _LockDialogState extends State<LockDialog> {
             controller: _controller,
             keyboardType: TextInputType.number,
           ),
-          // FIXME: figure out how to not need this so the keypad doesn't have to be scrolled
-          SizedBox(
-            width: MediaQuery.sizeOf(context).width / 3,
-            height: MediaQuery.sizeOf(context).height / 1.5,
-            child: Keypad(
-              onPressed: (value) {
-                _controller.text = value;
-              },
-            ),
+          Keypad(
+            onPressed: (value) {
+              _controller.text = value;
+            },
           ),
         ],
       ),

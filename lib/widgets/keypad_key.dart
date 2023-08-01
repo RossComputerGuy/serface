@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class KeypadKey extends StatelessWidget {
+class KeypadKey<T> extends StatelessWidget {
   const KeypadKey({
     super.key,
     required this.value,
     required this.onPressed
   });
 
-  final int value;
+  final T value;
   final VoidCallback onPressed;
 
   @override
