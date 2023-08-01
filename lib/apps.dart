@@ -3,12 +3,14 @@ import 'package:ionicons/ionicons.dart';
 
 import 'views.dart';
 
+Widget _buildGames(BuildContext context) => const SerfaceGamesView();
 Widget _buildPictures(BuildContext context) => const SerfacePicturesView();
 Widget _buildPuzzles(BuildContext context) => const SerfacePuzzlesView();
 Widget _buildYouTube(BuildContext context) => const SerfaceYouTubeView();
 Widget _buildSettings(BuildContext context) => const SerfaceSettingsView();
 
 enum SerfaceApplications {
+  games(icon: Ionicons.game_controller, name: 'Games', builder: _buildGames),
   pictures(icon: Ionicons.camera, name: 'Pictures', builder: _buildPictures),
   puzzles(icon: Ionicons.extension_puzzle, name: 'Puzzels', builder: _buildPuzzles),
   youtube(icon: Ionicons.logo_youtube, name: 'YouTube', builder: _buildYouTube),

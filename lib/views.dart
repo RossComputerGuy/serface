@@ -1,3 +1,4 @@
+export 'views/games.dart';
 export 'views/home.dart';
 export 'views/pictures.dart';
 export 'views/puzzles.dart';
