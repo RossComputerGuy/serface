@@ -12,7 +12,12 @@ class SerfaceMainLayout extends StatelessWidget {
       body: Row(
         children: [
           const SerfaceNavigation(),
-          child
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: child,
+            ),
+          ),
         ],
       ),
     );

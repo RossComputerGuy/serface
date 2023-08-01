@@ -4,16 +4,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:serface/widgets.dart';
 import 'package:serface/settings.dart';
 
-class LockDialog extends StatefulWidget {
-  const LockDialog({
+class CodeChangeDialog extends StatefulWidget {
+  const CodeChangeDialog({
     super.key
   });
 
   @override
-  State<LockDialog> createState() => _LockDialogState();
+  State<CodeChangeDialog> createState() => _CodeChangeDialogState();
 }
 
-class _LockDialogState extends State<LockDialog> {
+class _CodeChangeDialogState extends State<CodeChangeDialog> {
   TextEditingController _controller = TextEditingController();
 
   @override
@@ -28,7 +28,7 @@ class _LockDialogState extends State<LockDialog> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      title: const Text('Application requires code'),
+      title: const Text('Enter new passcode'),
       content: Column(
         children: [
           TextField(
@@ -49,21 +49,23 @@ class _LockDialogState extends State<LockDialog> {
         ),
         TextButton(
           onPressed: () => Navigator.of(context).pop(_controller.text),
-          child: const Text('Unlock'),
+          child: const Text('Change'),
         ),
       ],
     );
 }
 
-Future<bool> showLockDialog({
+Future<bool> showPasscodeChangeDialog({
   required BuildContext context
 }) async {
-  final code = await showDialog(
+  final code = await showDialog<String>(
     context: context,
-    builder: (context) => LockDialog(),
-    barrierDismissible: false,
+    builder: (context) => CodeChangeDialog(),
   );
 
-  final realCode = SerfaceSettings.adminCode.valueFor(Provider.of<SharedPreferences>(context, listen: false)!);
-  return code == realCode;
+  if (code == null) return false;
+
+  final prefs = Provider.of<SharedPreferences>(context, listen: false)!;
+  prefs.setString(SerfaceSettings.adminCode.name, code!);
+  return true;
 }
