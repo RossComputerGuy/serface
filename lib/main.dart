@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gokai/gokai.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'apps.dart';
+import 'compat.dart';
 import 'models.dart';
 import 'views.dart';
 import 'widgets.dart';
@@ -30,21 +32,33 @@ class SerfaceApp extends StatelessWidget {
       future: GokaiContext().init(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return MultiProvider(
-            providers: [
-              ChangeNotifierProvider(create: (context) => BatteryModel(snapshot.data!)),
-              Provider(create: (context) => snapshot.data!),
-            ],
-            child: MaterialApp(
-              title: 'Serface',
-              theme: _buildTheme(),
-              darkTheme: _buildTheme(brightness: Brightness.dark),
-              routes: <String, WidgetBuilder>{
-                '/': (_) => const SerfaceHomeView(),
-              }..addEntries(SerfaceApplications.values
-                .map((app) => MapEntry('/${app.name}', app.builder)).toList()
-              ),
-            ),
+          final gokaiContext = snapshot.data!;
+          SharedPreferencesGokai.registerWith(context: gokaiContext);
+          return FutureBuilder(
+            future: SharedPreferences.getInstance(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final prefs = snapshot.data!;
+                return MultiProvider(
+                  providers: [
+                    ChangeNotifierProvider(create: (context) => BatteryModel(gokaiContext)),
+                    Provider(create: (context) => gokaiContext),
+                    Provider(create: (context) => prefs),
+                  ],
+                  child: MaterialApp(
+                    title: 'Serface',
+                    theme: _buildTheme(),
+                    darkTheme: _buildTheme(brightness: Brightness.dark),
+                    routes: <String, WidgetBuilder>{
+                      '/': (_) => const SerfaceHomeView(),
+                    }..addEntries(SerfaceApplications.values
+                      .map((app) => MapEntry('/${app.name}', app.builder)).toList()
+                    ),
+                  ),
+                );
+              }
+              return const SizedBox();
+            },
           );
         }
         return const SizedBox();
