@@ -63,7 +63,7 @@ class SerfaceAppState extends State<SerfaceApp> {
 
   void lock() {
     if (!_locked) {
-      _navigatorKey.currentState!.pushReplacementNamed('/locked');
+      _navigatorKey.currentState!.pushNamed('/locked');
       _locked = true;
     }
   }
