@@ -13,7 +13,7 @@ class SerfaceNavigation extends StatelessWidget {
   int _computeIndex(BuildContext context) {
     final routeName = ModalRoute.of(context)!.settings!.name;
     if (routeName == '/') return 0;
-    return SerfaceApplications.values.indexWhere((app) => routeName == '/' + app.name) + 1;
+    return SerfaceApplications.values.indexWhere((app) => routeName == '/${app.name}') + 1;
   }
 
   @override
@@ -37,9 +37,17 @@ class SerfaceNavigation extends StatelessWidget {
           ),
         ),
       ),
+      onDestinationSelected: (i) {
+        if (i == 0) {
+          Navigator.pushReplacementNamed(context, '/');
+        } else {
+          final app = SerfaceApplications.values[i - 1];
+          Navigator.pushReplacementNamed(context, '/${app.name}');
+        }
+      },
       destinations: [
         NavigationRailDestination(
-          icon: Icon(Ionicons.home),
+          icon: Icon(Ionicons.home, size: 60),
           label: Text('Home'),
         )
       ]..addAll(SerfaceApplications.values.map(

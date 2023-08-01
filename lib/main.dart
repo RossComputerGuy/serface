@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gokai/gokai.dart';
 import 'package:provider/provider.dart';
 
+import 'apps.dart';
 import 'models.dart';
 import 'views.dart';
 import 'widgets.dart';
@@ -38,9 +39,11 @@ class SerfaceApp extends StatelessWidget {
               title: 'Serface',
               theme: _buildTheme(),
               darkTheme: _buildTheme(brightness: Brightness.dark),
-              routes: {
+              routes: <String, WidgetBuilder>{
                 '/': (_) => const SerfaceHomeView(),
-              },
+              }..addEntries(SerfaceApplications.values
+                .map((app) => MapEntry('/${app.name}', app.builder)).toList()
+              ),
             ),
           );
         }
