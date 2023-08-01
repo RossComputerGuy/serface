@@ -64,7 +64,7 @@ class _BatteryIndicatorState extends State<BatteryIndicator> {
       else if (_level <= 28) icon = Icons.battery_1_bar;
       else if (_level <= 14) icon = Icons.battery_0_bar;
     }
-    return Icon(icon);
+    return Icon(icon, size: 60);
   }
 
   Widget _buildLabel(BuildContext context) {

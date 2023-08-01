@@ -44,6 +44,7 @@ dependencies:
   path_provider: ^2.0.15
   path: ^1.8.3
   file: ^6.1.4
+  nm: ^0.5.0
 
 dev_dependencies:
   flutter_test:

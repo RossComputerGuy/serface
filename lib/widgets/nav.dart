@@ -4,6 +4,7 @@ import 'package:serface/apps.dart';
 
 import 'battery_bar.dart';
 import 'clock.dart';
+import 'network_bar.dart';
 
 class SerfaceNavigation extends StatelessWidget {
   const SerfaceNavigation({
@@ -27,6 +28,7 @@ class SerfaceNavigation extends StatelessWidget {
             children: [
               const Spacer(),
               const BatteryBar(),
+              const NetworkBar(),
               DigitalClock(
                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                   fontSize: 20,
