@@ -1,4 +1,5 @@
 export 'views/home.dart';
+export 'views/pictures.dart';
 export 'views/puzzles.dart';
 export 'views/locked.dart';
 export 'views/youtube.dart';
