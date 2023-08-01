@@ -3,7 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 enum SerfaceSettings<T> {
   adminCode('0000'),
-  theme('system');
+  theme('system'),
+  screenTimeLock(30),
+  screenTimeUnlock(30);
 
   const SerfaceSettings(this.defaultValue);
 

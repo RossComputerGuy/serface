@@ -95,6 +95,38 @@ class _SerfaceSettingsViewState extends State<SerfaceSettingsView> {
                   ),
               ),
             ),
+            ListTile(
+              leading: Icon(Ionicons.alarm),
+              title: Text('Set screen time limit'),
+              onTap: () {
+                final fullMinutes = SerfaceSettings.screenTimeLock.valueFor(prefs);
+                showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay(hour: fullMinutes ~/ 60, minute: fullMinutes % 60),
+                ).then((duration) {
+                  if (duration != null) {
+                    prefs.setInt(SerfaceSettings.screenTimeLock.name, (duration!.hour * 60) + duration!.minute);
+                    SerfaceApp.of(context).resetTimers();
+                  }
+                });
+              },
+            ),
+            ListTile(
+              leading: Icon(Ionicons.alarm),
+              title: Text('Set duration of the screen time limit'),
+              onTap: () {
+                final fullMinutes = SerfaceSettings.screenTimeUnlock.valueFor(prefs);
+                showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay(hour: fullMinutes ~/ 60, minute: fullMinutes % 60),
+                ).then((duration) {
+                  if (duration != null) {
+                    prefs.setInt(SerfaceSettings.screenTimeUnlock.name, (duration!.hour * 60) + duration!.minute);
+                    SerfaceApp.of(context).resetTimers();
+                  }
+                });
+              },
+            ),
           ].map(
             (child) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
