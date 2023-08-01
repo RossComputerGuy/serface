@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum SerfaceSettings<T> {
-  adminCode('0000');
+  adminCode('0000'),
+  theme('system');
 
   const SerfaceSettings(this.defaultValue);
 

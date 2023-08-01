@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:serface/apps.dart';
+import 'package:serface/app.dart';
 import 'package:serface/dialogs.dart';
 import 'package:serface/layouts.dart';
+import 'package:serface/settings.dart';
 
 class SerfaceSettingsView extends StatefulWidget {
   const SerfaceSettingsView({ super.key });
@@ -32,6 +36,8 @@ class _SerfaceSettingsViewState extends State<SerfaceSettingsView> {
         });
       });
     }
+
+    final prefs = Provider.of<SharedPreferences>(context)!;
     return SerfaceMainLayout(
       child: ListTileTheme(
         tileColor: Colors.indigo,
@@ -43,9 +49,7 @@ class _SerfaceSettingsViewState extends State<SerfaceSettingsView> {
         child: ListView(
           children: [
             ListTile(
-              leading: Icon(
-                Ionicons.key
-              ),
+              leading: Icon(Ionicons.key),
               title: Text('Set admin code'),
               onTap: () {
                 showPasscodeChangeDialog(context: context).then((value) {
@@ -55,7 +59,48 @@ class _SerfaceSettingsViewState extends State<SerfaceSettingsView> {
                 });
               }
             ),
-          ],
+            ListTile(
+              leading: Icon(Ionicons.list),
+              title: Text('Set theme mode'),
+              onTap: () => showDialog(
+                context: context,
+                builder: (context) =>
+                  AlertDialog(
+                    title: const Text('Set theme mode'),
+                    content: StatefulBuilder(
+                      builder: (context, setState) {
+                        final prefTheme = SerfaceSettings.theme.valueFor(prefs);
+                        return Column(
+                          children: ThemeMode.values.map(
+                            (mode) => Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: RadioListTile<ThemeMode>(
+                                title: Text(mode.name.substring(0, 1).toUpperCase() + mode.name.substring(1)),
+                                value: mode,
+                                groupValue: ThemeMode.values.firstWhere((v) => v.name == prefTheme),
+                                onChanged: (value) {
+                                  setState(() {
+                                    if (value != null) {
+                                      prefs.setString(SerfaceSettings.theme.name, value!.name);
+                                      SerfaceApp.of(context).reload();
+                                    }
+                                  });
+                                },
+                              ),
+                            )
+                          ).toList()
+                        );
+                      },
+                    ),
+                  ),
+              ),
+            ),
+          ].map(
+            (child) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: child,
+            )
+          ).toList(),
         ),
       ),
     );

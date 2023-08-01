@@ -3,28 +3,17 @@ import 'package:gokai/gokai.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'apps.dart';
+import 'app.dart';
 import 'compat.dart';
 import 'models.dart';
-import 'views.dart';
 import 'widgets.dart';
 
 void main() {
-  runApp(const SerfaceApp());
+  runApp(const Serface());
 }
 
-class SerfaceApp extends StatelessWidget {
-  const SerfaceApp({super.key});
-
-  ThemeData _buildTheme({Brightness brightness = Brightness.light})
-    => ThemeData(
-      colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: Colors.green,
-        accentColor: Colors.white,
-        brightness: brightness,
-      ),
-      useMaterial3: true,
-    );
+class Serface extends StatelessWidget {
+  const Serface({super.key});
 
   @override
   Widget build(BuildContext context) =>
@@ -45,16 +34,7 @@ class SerfaceApp extends StatelessWidget {
                     Provider(create: (context) => gokaiContext),
                     Provider(create: (context) => prefs),
                   ],
-                  child: MaterialApp(
-                    title: 'Serface',
-                    theme: _buildTheme(),
-                    darkTheme: _buildTheme(brightness: Brightness.dark),
-                    routes: <String, WidgetBuilder>{
-                      '/': (_) => const SerfaceHomeView(),
-                    }..addEntries(SerfaceApplications.values
-                      .map((app) => MapEntry('/${app.name}', app.builder)).toList()
-                    ),
-                  ),
+                  child: const SerfaceApp(),
                 );
               }
               return const SizedBox();
