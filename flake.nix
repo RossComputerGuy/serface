@@ -47,7 +47,7 @@
 
           src = cleanSource self;
 
-          #depsListFile = ./deps.json;
+          depsListFile = ./deps.json;
           vendorHash = "sha256-3oX5yGWkxHnH1WGNKfKhLI22Hf0nTaOQ8LS52iBTUAc=";
 
           flutterBuildFlags = [
