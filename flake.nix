@@ -32,6 +32,7 @@
           (_: _: {
             gokai = gokai.packages.${system}.sdk;
             gokai-debug = gokai.packages.${system}.sdk-debug;
+            path = nixpkgs.outPath;
           })
         ];
 
@@ -70,6 +71,12 @@
             platforms = [ "x86_64-linux" "aarch64-linux" ];
           };
         };
+
+        legacyPackages = pkgs.appendOverlays [
+          (_: _: {
+            serface = self.packages.${system}.default;
+          })
+        ];
 
         devShells.default = pkgs.mkShell {
           name = "serface";
