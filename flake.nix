@@ -21,6 +21,14 @@
     flake-utils.eachSystem flake-utils.allSystems (system:
       let
         pkgs = expidus-sdk.legacyPackages.${system};
+
+        arch = with pkgs; if targetPlatform.isx86_64 then "x64"
+          else "${targetPlatform.parsed.cpu.family}${toString targetPlatform.parsed.cpu.bits}";
+
+        mimalloc = pkgs.fetchurl {
+          url = "https://github.com/microsoft/mimalloc/archive/refs/tags/v2.1.2.tar.gz";
+          hash = "sha256-Kxv/b3F/lyXHC/jXnkeG2hPeiicAWeS6C90mKue+Rus=";
+        };
       in rec {
         packages.default = pkgs.flutter.buildFlutterApplication {
           pname = "serface";
@@ -39,11 +47,17 @@
           buildInputs = with pkgs; [
             mpv
             libdvdnav
+            libdvdread
             libass
             ffmpeg
             libglvnd
             wayland
           ];
+
+          preBuild = ''
+            mkdir -p $NIX_BUILD_TOP/source/build/linux/${arch}/release
+            cp ${mimalloc} $NIX_BUILD_TOP/source/build/linux/${arch}/release/mimalloc-2.1.2.tar.gz
+          '';
 
           meta = {
             description = "A simple tablet UI for my sister.";
