@@ -19,46 +19,49 @@ class SerfaceNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-    NavigationRail(
-      selectedIndex: _computeIndex(context),
-      trailing: Expanded(
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: Column(
-            children: [
-              const Spacer(),
-              const BatteryBar(),
-              const NetworkBar(),
-              DigitalClock(
-                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+    Container(
+      constraints: BoxConstraints.tightFor(width: 100),
+      child: NavigationRail(
+        selectedIndex: _computeIndex(context),
+        trailing: Expanded(
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Column(
+              children: [
+                const Spacer(),
+                const BatteryBar(),
+                const NetworkBar(),
+                DigitalClock(
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-      onDestinationSelected: (i) {
-        if (i == 0) {
-          Navigator.pushReplacementNamed(context, '/');
-        } else {
-          final app = SerfaceApplications.values[i - 1];
-          Navigator.pushReplacementNamed(context, '/${app.name}');
-        }
-      },
-      destinations: [
-        NavigationRailDestination(
-          icon: Icon(Ionicons.home, size: 60),
-          selectedIcon: Icon(
-            Ionicons.home,
-            size: 60,
-            color: Colors.blue,
+        onDestinationSelected: (i) {
+          if (i == 0) {
+            Navigator.pushReplacementNamed(context, '/');
+          } else {
+            final app = SerfaceApplications.values[i - 1];
+            Navigator.pushReplacementNamed(context, '/${app.name}');
+          }
+        },
+        destinations: [
+          NavigationRailDestination(
+            icon: Icon(Ionicons.home, size: 60),
+            selectedIcon: Icon(
+              Ionicons.home,
+              size: 60,
+              color: Colors.blue,
+            ),
+            label: Text('Home'),
           ),
-          label: Text('Home'),
-        )
-      ]..addAll(SerfaceApplications.values.map(
-        (app) => app.buildNavigation(context)
-      ).toList()),
+        ]..addAll(SerfaceApplications.values.map(
+          (app) => app.buildNavigation(context)
+        ).toList()),
+      ),
     );
 }

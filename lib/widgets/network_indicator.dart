@@ -43,14 +43,14 @@ class _NetworkIndicatorState extends State<NetworkIndicator> {
       if (widget.device.state == NetworkManagerDeviceState.activated) {
         if (widget.device.wireless!.activeAccessPoint != null) {
           final ap = widget.device.wireless!.activeAccessPoint!;
-          if (ap.strength < 100) return Icon(Icons.network_wifi_3_bar);
-          if (ap.strength < 60) return Icon(Icons.network_wifi_2_bar);
-          if (ap.strength < 30) return Icon(Icons.network_wifi_1_bar);
+          if (ap.strength < 100) return Icon(Icons.network_wifi_3_bar, size: 50);
+          if (ap.strength < 60) return Icon(Icons.network_wifi_2_bar, size: 50);
+          if (ap.strength < 30) return Icon(Icons.network_wifi_1_bar, size: 50);
         }
-        return Icon(Icons.wifi, size: 60);
+        return Icon(Icons.wifi, size: 50);
       }
 
-      return Icon(Icons.signal_wifi_statusbar_null, size: 60);
+      return Icon(Icons.signal_wifi_statusbar_null, size: 50);
     }
     return const SizedBox();
   }

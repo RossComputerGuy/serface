@@ -68,7 +68,11 @@ class _BatteryIndicatorState extends State<BatteryIndicator> {
 
   Widget _buildLabel(BuildContext context) {
     final label = (_level * 100).round();
-    return Text('$label%');
+    return Text(
+      '$label%',
+      style: Theme.of(context).textTheme.labelLarge!
+        .copyWith(fontSize: 17),
+    );
   }
 
   @override
