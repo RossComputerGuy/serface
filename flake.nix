@@ -30,34 +30,29 @@
           hash = "sha256-Kxv/b3F/lyXHC/jXnkeG2hPeiicAWeS6C90mKue+Rus=";
         };
 
-        westonConfig = pkgs.writers.writeText "weston.ini" (generators.toINI {} {
-          shell = {
-            type = "kiosk-shell.so";
-          };
+        westonConfig = pkgs.writers.writeText "weston.ini" ''
+          [shell]
+          type=kiosk-shell.so
 
-          launcher = [
-            {
-              displayname = "Terminal";
-              path = "${pkgs.weston}/bin/weston-terminal";
-            }
-            {
-              displayname = "Network Manager";
-              path = "${pkgs.weston}/bin/weston-terminal --shell=${pkgs.networkmanager}/bin/nmtui";
-            }
-            {
-              displayname = "Bluetooth Manager";
-              path = "${pkgs.blueman}/bin/blueman-manager";
-            }
-            {
-              displayname = "Serface";
-              path = "${self.packages.${system}.default}/bin/serface";
-            }
-          ];
+          [launcher]
+          displayname=Terminal
+          path=${pkgs.weston}/bin/weston-terminal
 
-          input-method = {
-            path = "${pkgs.weston}/libexec/weston-keyboard";
-          };
-        });
+          [launcher]
+          displayname=Network Manager
+          path=${pkgs.weston}/bin/weston-terminal --shell=${pkgs.networkmanager}/bin/nmtui
+
+          [launcher]
+          displayname=Bluetooth Manager
+          path=${pkgs.blueman}/bin/blueman-manager
+
+          [launcher]
+          displayname=Serface
+          path=${self.packages.${system}.default}/bin/serface
+
+          [input-method]
+          path=${pkgs.weston}/libexec/weston-keyboard
+        '';
       in rec {
         packages.default = pkgs.flutter.buildFlutterApplication {
           pname = "serface";
