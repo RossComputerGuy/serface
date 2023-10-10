@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'apps.dart';
 import 'settings.dart';
@@ -24,12 +25,13 @@ class SerfaceAppState extends State<SerfaceApp> {
   Timer? _unlockTimer;
 
   ThemeData _buildTheme({Brightness brightness = Brightness.light})
-    => ThemeData(
+    => ThemeData.from(
       colorScheme: ColorScheme.fromSwatch(
         primarySwatch: Colors.green,
         accentColor: Colors.white,
         brightness: brightness,
       ),
+      textTheme: GoogleFonts.notoSansTextTheme(),
       useMaterial3: true,
     );
 

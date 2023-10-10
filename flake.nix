@@ -21,7 +21,7 @@
     flake-utils.eachSystem flake-utils.allSystems (system:
       let
         pkgs = expidus-sdk.legacyPackages.${system};
-      in {
+      in rec {
         packages.default = pkgs.flutter.buildFlutterApplication {
           pname = "serface";
           version = "1.0.0+git-${self.shortRev or "dirty"}";
@@ -29,10 +29,18 @@
           src = cleanSource self;
 
           depsListFile = ./deps.json;
-          vendorHash = "sha256-IepOeCUzFbu+AVrov107vxmyNyGcOQhN6TJqIxJf6Bk=";
+          vendorHash = "sha256-gjvURsYkh9Qc0rVhDVAa+aZNXDQXJqxuHLBYCjmOcvk=";
 
           nativeBuildInputs = with pkgs; [
             pkg-config
+          ];
+
+          buildInputs = with pkgs; [
+            mpv
+            libass
+            ffmpeg
+            libglvnd
+            wayland
           ];
 
           meta = {
@@ -49,12 +57,142 @@
           })
         ];
 
+        expidusConfigurations.default = expidus-sdk.lib.expidusSystem {
+          inherit pkgs;
+
+          modules = [
+            {
+              disabledModules = [
+                "${expidus-sdk}/variants/mainline/modules/system/config.nix"
+              ];
+
+              fileSystems = {
+                "/" = {
+                  device = "/dev/disk/by-label/EXPIDUS_ROOT";
+                };
+                "/data" = {
+                  device = "/dev/disk/by-label/EXPIDUS_DATA";
+                  neededForBoot = true;
+                };
+              };
+
+              system.rootfs.options = [ "-L EXPIDUS_ROOT" ];
+              system.datafs.options = [ "-L EXPIDUS_DATA" ];
+
+              environment.systemPackages = [
+                packages.default
+              ];
+
+              fonts = {
+                fontDir.enable = true;
+                enableDefaultPackages = true;
+              };
+
+              boot = {
+                initrd = rec {
+                  availableKernelModules = [ "virtio_pci" "virtio_blk" "virtio_scsi" "nvme" "ahci" ];
+                  kernelModules = availableKernelModules;
+                };
+                plymouth.enable = true;
+                kernelParams = [ "root=/dev/vdb" "console=ttyS0,9600" ];
+              };
+
+              users.users.serface = {
+                password = "serface";
+                isNormalUser = true;
+                home = "/home/expidus";
+                description = "Serface Tablet";
+                group = "wheel";
+                extraGroups = [ "video" "input" "tty" "users" "systemd-journal" ];
+              };
+
+              hardware.opengl.enable = true;
+
+              xdg = {
+                autostart.enable = true;
+                portal = {
+                  enable = true;
+                  xdgOpenUsePortal = true;
+                  wlr.enable = true;
+                };
+              };
+
+              networking = {
+                networkmanager.enable = true;
+                useDHCP = false;
+                useNetworkd = false;
+              };
+
+              services.acpid.enable = true;
+              services.xserver.enable = true;
+              services.accounts-daemon.enable = true;
+              services.upower.enable = true;
+              security.polkit.enable = true;
+
+              security.apparmor.enable = true;
+              services.dbus.apparmor = "enabled";
+              services.getty.autologinUser = "serface";
+
+              services.xserver.displayManager.job.execCmd = ''
+                export PATH=${pkgs.weston}/bin:$PATH
+                exec weston
+              '';
+
+              systemd.services.display-manager = {
+                enable = true;
+
+                onFailure = [
+                  "getty@tty1.service"
+                ];
+
+                conflicts = [
+                  "getty@tty1.service"
+                ];
+
+                before = [
+                  "graphical.target"
+                ];
+
+                after = [
+                  "getty@tty1.service"
+                  "rc-local.service"
+                  "plymouth-quit-wait.service"
+                  "systemd-user-sessions.service"
+                ];
+
+                wants = [
+                  "upower.service"
+                  "accounts-daemon.service"
+                ];
+
+                unitConfig = {
+                  ConditionPathExists = "/dev/tty0";
+                };
+
+                serviceConfig = {
+                  User = "serface";
+                  PAMName = "login";
+
+                  TTYPath = "/dev/tty1";
+                  TTYReset = "yes";
+                  TTYVHangup = "yes";
+                  TTYVTDisallocate = "yes";
+
+                  UtmpIdentifier = "tty1";
+                  UtmpMode = "user";
+                };
+              };
+            }
+          ];
+        };
+
         devShells.default = pkgs.mkShell {
           name = "serface";
 
           packages = with pkgs; [
             flutter
-          ];
+            pkg-config
+          ] ++ packages.default.buildInputs;
         };
       });
 }

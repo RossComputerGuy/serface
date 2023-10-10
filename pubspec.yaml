@@ -23,8 +23,12 @@ dependencies:
   file: ^6.1.4
   nm: ^0.5.0
   upower: ^0.7.0
-  media_kit: ^1.1.8+2
   youtube_explode_dart: ^2.0.2
+  bitsdojo_window: ^0.1.5
+  google_fonts: ^6.1.0
+  media_kit: ^1.1.8+2
+  media_kit_video: ^1.0.2
+  http: ^1.1.0
 
 dependency_overrides:
   dynamite_runtime:

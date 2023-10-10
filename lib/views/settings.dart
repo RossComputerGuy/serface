@@ -1,3 +1,4 @@
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
@@ -135,6 +136,11 @@ class _SerfaceSettingsViewState extends State<SerfaceSettingsView> {
                 context: context,
                 builder: (context) => const NextcloudLogin(),
               ),
+            ),
+            ListTile(
+              leading: Icon(Ionicons.exit),
+              title: Text('Exit to desktop'),
+              onTap: () => appWindow.close(),
             ),
           ].map(
             (child) => Padding(

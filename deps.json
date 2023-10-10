@@ -16,8 +16,12 @@
       "file",
       "nm",
       "upower",
-      "media_kit",
       "youtube_explode_dart",
+      "bitsdojo_window",
+      "google_fonts",
+      "media_kit",
+      "media_kit_video",
+      "http",
       "flutter_test",
       "flutter_lints",
       "dynamite_runtime"
@@ -319,47 +323,13 @@
     "dependencies": []
   },
   {
-    "name": "youtube_explode_dart",
-    "version": "2.0.2",
+    "name": "http",
+    "version": "1.1.0",
     "kind": "direct",
     "source": "hosted",
     "dependencies": [
-      "collection",
-      "freezed_annotation",
-      "html",
-      "http",
+      "async",
       "http_parser",
-      "json_annotation",
-      "meta",
-      "xml"
-    ]
-  },
-  {
-    "name": "xml",
-    "version": "6.3.0",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "collection",
-      "meta",
-      "petitparser"
-    ]
-  },
-  {
-    "name": "petitparser",
-    "version": "5.4.0",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "meta"
-    ]
-  },
-  {
-    "name": "json_annotation",
-    "version": "4.8.1",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
       "meta"
     ]
   },
@@ -376,44 +346,214 @@
     ]
   },
   {
-    "name": "http",
-    "version": "1.1.0",
+    "name": "media_kit_video",
+    "version": "1.0.2",
+    "kind": "direct",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "media_kit",
+      "ffi",
+      "wakelock",
+      "synchronized",
+      "screen_brightness",
+      "volume_controller",
+      "universal_platform",
+      "plugin_platform_interface"
+    ]
+  },
+  {
+    "name": "plugin_platform_interface",
+    "version": "2.1.5",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
-      "async",
-      "http_parser",
       "meta"
     ]
   },
   {
-    "name": "html",
-    "version": "0.15.4",
+    "name": "universal_platform",
+    "version": "1.0.0+1",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": []
+  },
+  {
+    "name": "volume_controller",
+    "version": "2.0.7",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
-      "csslib",
-      "source_span"
+      "flutter"
     ]
   },
   {
-    "name": "csslib",
-    "version": "1.0.0",
+    "name": "screen_brightness",
+    "version": "0.2.2+1",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
-      "source_span"
+      "flutter",
+      "screen_brightness_platform_interface",
+      "screen_brightness_android",
+      "screen_brightness_ios",
+      "screen_brightness_macos",
+      "screen_brightness_windows"
     ]
   },
   {
-    "name": "freezed_annotation",
-    "version": "2.4.1",
+    "name": "screen_brightness_windows",
+    "version": "0.1.3",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
+      "flutter",
+      "screen_brightness_platform_interface"
+    ]
+  },
+  {
+    "name": "screen_brightness_platform_interface",
+    "version": "0.1.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "plugin_platform_interface"
+    ]
+  },
+  {
+    "name": "screen_brightness_macos",
+    "version": "0.1.0+1",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "screen_brightness_platform_interface"
+    ]
+  },
+  {
+    "name": "screen_brightness_ios",
+    "version": "0.1.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "screen_brightness_platform_interface"
+    ]
+  },
+  {
+    "name": "screen_brightness_android",
+    "version": "0.1.0+2",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "screen_brightness_platform_interface"
+    ]
+  },
+  {
+    "name": "synchronized",
+    "version": "3.1.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": []
+  },
+  {
+    "name": "wakelock",
+    "version": "0.6.2",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "meta",
+      "wakelock_macos",
+      "wakelock_platform_interface",
+      "wakelock_web",
+      "wakelock_windows"
+    ]
+  },
+  {
+    "name": "wakelock_windows",
+    "version": "0.2.1",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "wakelock_platform_interface",
+      "win32"
+    ]
+  },
+  {
+    "name": "win32",
+    "version": "3.1.4",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "ffi"
+    ]
+  },
+  {
+    "name": "ffi",
+    "version": "2.0.2",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": []
+  },
+  {
+    "name": "wakelock_platform_interface",
+    "version": "0.3.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "meta"
+    ]
+  },
+  {
+    "name": "wakelock_web",
+    "version": "0.4.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "flutter_web_plugins",
+      "js",
+      "wakelock_platform_interface"
+    ]
+  },
+  {
+    "name": "js",
+    "version": "0.6.7",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "meta"
+    ]
+  },
+  {
+    "name": "flutter_web_plugins",
+    "version": "0.0.0",
+    "kind": "transitive",
+    "source": "sdk",
+    "dependencies": [
+      "flutter",
+      "characters",
       "collection",
-      "json_annotation",
-      "meta"
+      "material_color_utilities",
+      "meta",
+      "vector_math",
+      "web"
+    ]
+  },
+  {
+    "name": "wakelock_macos",
+    "version": "0.4.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "flutter_web_plugins",
+      "wakelock_platform_interface"
     ]
   },
   {
@@ -436,22 +576,6 @@
     ]
   },
   {
-    "name": "js",
-    "version": "0.6.7",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "meta"
-    ]
-  },
-  {
-    "name": "universal_platform",
-    "version": "1.0.0+1",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": []
-  },
-  {
     "name": "safe_local_storage",
     "version": "1.0.2",
     "kind": "transitive",
@@ -460,13 +584,6 @@
       "path",
       "synchronized"
     ]
-  },
-  {
-    "name": "synchronized",
-    "version": "3.1.0",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": []
   },
   {
     "name": "uuid",
@@ -516,6 +633,26 @@
     ]
   },
   {
+    "name": "xml",
+    "version": "6.3.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "collection",
+      "meta",
+      "petitparser"
+    ]
+  },
+  {
+    "name": "petitparser",
+    "version": "5.4.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "meta"
+    ]
+  },
+  {
     "name": "archive",
     "version": "3.4.5",
     "kind": "transitive",
@@ -547,57 +684,15 @@
     ]
   },
   {
-    "name": "upower",
-    "version": "0.7.0",
+    "name": "google_fonts",
+    "version": "6.1.0",
     "kind": "direct",
     "source": "hosted",
     "dependencies": [
-      "dbus"
-    ]
-  },
-  {
-    "name": "dbus",
-    "version": "0.7.8",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "args",
-      "ffi",
-      "meta",
-      "xml"
-    ]
-  },
-  {
-    "name": "ffi",
-    "version": "2.0.2",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": []
-  },
-  {
-    "name": "args",
-    "version": "2.4.2",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": []
-  },
-  {
-    "name": "nm",
-    "version": "0.5.0",
-    "kind": "direct",
-    "source": "hosted",
-    "dependencies": [
-      "dbus"
-    ]
-  },
-  {
-    "name": "file",
-    "version": "6.1.4",
-    "kind": "direct",
-    "source": "hosted",
-    "dependencies": [
-      "meta",
-      "path"
+      "flutter",
+      "http",
+      "path_provider",
+      "crypto"
     ]
   },
   {
@@ -628,15 +723,6 @@
     ]
   },
   {
-    "name": "win32",
-    "version": "5.0.6",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "ffi"
-    ]
-  },
-  {
     "name": "path_provider_platform_interface",
     "version": "2.1.0",
     "kind": "transitive",
@@ -645,15 +731,6 @@
       "flutter",
       "platform",
       "plugin_platform_interface"
-    ]
-  },
-  {
-    "name": "plugin_platform_interface",
-    "version": "2.1.5",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "meta"
     ]
   },
   {
@@ -707,6 +784,166 @@
     ]
   },
   {
+    "name": "bitsdojo_window",
+    "version": "0.1.5",
+    "kind": "direct",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "bitsdojo_window_platform_interface",
+      "bitsdojo_window_windows",
+      "bitsdojo_window_macos",
+      "bitsdojo_window_linux"
+    ]
+  },
+  {
+    "name": "bitsdojo_window_linux",
+    "version": "0.1.3",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "bitsdojo_window_platform_interface",
+      "ffi"
+    ]
+  },
+  {
+    "name": "bitsdojo_window_platform_interface",
+    "version": "0.1.2",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "meta",
+      "plugin_platform_interface"
+    ]
+  },
+  {
+    "name": "bitsdojo_window_macos",
+    "version": "0.1.3",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "bitsdojo_window_platform_interface",
+      "ffi"
+    ]
+  },
+  {
+    "name": "bitsdojo_window_windows",
+    "version": "0.1.5",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "bitsdojo_window_platform_interface",
+      "win32",
+      "ffi"
+    ]
+  },
+  {
+    "name": "youtube_explode_dart",
+    "version": "2.0.2",
+    "kind": "direct",
+    "source": "hosted",
+    "dependencies": [
+      "collection",
+      "freezed_annotation",
+      "html",
+      "http",
+      "http_parser",
+      "json_annotation",
+      "meta",
+      "xml"
+    ]
+  },
+  {
+    "name": "json_annotation",
+    "version": "4.8.1",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "meta"
+    ]
+  },
+  {
+    "name": "html",
+    "version": "0.15.4",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "csslib",
+      "source_span"
+    ]
+  },
+  {
+    "name": "csslib",
+    "version": "1.0.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "source_span"
+    ]
+  },
+  {
+    "name": "freezed_annotation",
+    "version": "2.4.1",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "collection",
+      "json_annotation",
+      "meta"
+    ]
+  },
+  {
+    "name": "upower",
+    "version": "0.7.0",
+    "kind": "direct",
+    "source": "hosted",
+    "dependencies": [
+      "dbus"
+    ]
+  },
+  {
+    "name": "dbus",
+    "version": "0.7.8",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "args",
+      "ffi",
+      "meta",
+      "xml"
+    ]
+  },
+  {
+    "name": "args",
+    "version": "2.4.2",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": []
+  },
+  {
+    "name": "nm",
+    "version": "0.5.0",
+    "kind": "direct",
+    "source": "hosted",
+    "dependencies": [
+      "dbus"
+    ]
+  },
+  {
+    "name": "file",
+    "version": "6.1.4",
+    "kind": "direct",
+    "source": "hosted",
+    "dependencies": [
+      "meta",
+      "path"
+    ]
+  },
+  {
     "name": "shared_preferences",
     "version": "2.2.0",
     "kind": "direct",
@@ -754,21 +991,6 @@
       "flutter",
       "flutter_web_plugins",
       "shared_preferences_platform_interface"
-    ]
-  },
-  {
-    "name": "flutter_web_plugins",
-    "version": "0.0.0",
-    "kind": "transitive",
-    "source": "sdk",
-    "dependencies": [
-      "flutter",
-      "characters",
-      "collection",
-      "material_color_utilities",
-      "meta",
-      "vector_math",
-      "web"
     ]
   },
   {
