@@ -14,7 +14,11 @@ class SerfaceNavigation extends StatelessWidget {
   int _computeIndex(BuildContext context) {
     final routeName = ModalRoute.of(context)!.settings!.name;
     if (routeName == '/') return 0;
-    return SerfaceApplications.values.indexWhere((app) => routeName == '/${app.name}') + 1;
+    return SerfaceApplications.values
+      .indexWhere((app) =>
+        (routeName ?? '/')
+          .toLowerCase()
+          .startsWith('/${app.name.toLowerCase()}')) + 1;
   }
 
   @override

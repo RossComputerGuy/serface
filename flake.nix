@@ -29,14 +29,16 @@
           src = cleanSource self;
 
           depsListFile = ./deps.json;
-          vendorHash = "sha256-gjvURsYkh9Qc0rVhDVAa+aZNXDQXJqxuHLBYCjmOcvk=";
+          vendorHash = "sha256-B5eKWy3eF3ewrTuK0nmOwDo3GnFm4e1oPW6RRPL1l+4=";
 
           nativeBuildInputs = with pkgs; [
             pkg-config
+            gnumake
           ];
 
           buildInputs = with pkgs; [
             mpv
+            libdvdnav
             libass
             ffmpeg
             libglvnd

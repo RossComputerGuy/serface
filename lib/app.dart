@@ -31,7 +31,7 @@ class SerfaceAppState extends State<SerfaceApp> {
         accentColor: Colors.white,
         brightness: brightness,
       ),
-      textTheme: GoogleFonts.notoSansTextTheme(),
+      textTheme: GoogleFonts.zcoolQingKeHuangYouTextTheme(),
       useMaterial3: true,
     );
 
@@ -114,6 +114,8 @@ class SerfaceAppState extends State<SerfaceApp> {
       routes: <String, WidgetBuilder>{
         '/': (_) => const SerfaceHomeView(),
         '/locked': (_) => const SerfaceLockedView(),
+        '/youtube/channel': (_) => const SerfaceYouTubeChannelView(),
+        '/youtube/video': (_) => const SerfaceYouTubeVideoView(),
       }..addEntries(SerfaceApplications.values
         .map((app) => MapEntry('/${app.name}', app.builder)).toList()
       ),

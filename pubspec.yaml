@@ -14,6 +14,10 @@ dependencies:
       url: https://github.com/provokateurin/nextcloud-neon
       path: packages/nextcloud
       ref: f6f3597c6396a9a2e29f1dc431815a0ff2e16c64
+  dynamic_layouts:
+    git:
+      url: https://github.com/flutter/packages/
+      path: packages/dynamic_layouts
   ionicons: ^0.2.2
   intl: ^0.18.1
   provider: ^6.0.5
@@ -27,10 +31,11 @@ dependencies:
   bitsdojo_window: ^0.1.5
   google_fonts: ^6.1.0
   media_kit: ^1.1.8+2
-  media_kit_video: ^1.0.2
-  http: ^1.1.0
+  media_kit_video: ^1.2.1
+  media_kit_libs_video: ^1.0.3
 
 dependency_overrides:
+  win32: 5.0.9
   dynamite_runtime:
     git:
       url: https://github.com/provokateurin/nextcloud-neon

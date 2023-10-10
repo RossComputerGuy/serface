@@ -7,6 +7,7 @@
     "dependencies": [
       "flutter",
       "nextcloud",
+      "dynamic_layouts",
       "ionicons",
       "intl",
       "provider",
@@ -21,9 +22,10 @@
       "google_fonts",
       "media_kit",
       "media_kit_video",
-      "http",
+      "media_kit_libs_video",
       "flutter_test",
       "flutter_lints",
+      "win32",
       "dynamite_runtime"
     ]
   },
@@ -84,7 +86,7 @@
   },
   {
     "name": "built_value",
-    "version": "8.6.1",
+    "version": "8.6.3",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -109,8 +111,24 @@
     "dependencies": []
   },
   {
+    "name": "win32",
+    "version": "5.0.9",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "ffi"
+    ]
+  },
+  {
+    "name": "ffi",
+    "version": "2.1.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": []
+  },
+  {
     "name": "flutter_lints",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "kind": "dev",
     "source": "hosted",
     "dependencies": [
@@ -323,52 +341,99 @@
     "dependencies": []
   },
   {
-    "name": "http",
-    "version": "1.1.0",
+    "name": "media_kit_libs_video",
+    "version": "1.0.3",
     "kind": "direct",
     "source": "hosted",
     "dependencies": [
-      "async",
-      "http_parser",
-      "meta"
+      "media_kit_native_event_loop",
+      "media_kit_libs_android_video",
+      "media_kit_libs_ios_video",
+      "media_kit_libs_macos_video",
+      "media_kit_libs_windows_video",
+      "media_kit_libs_linux"
     ]
   },
   {
-    "name": "http_parser",
-    "version": "4.0.2",
+    "name": "media_kit_libs_linux",
+    "version": "1.1.3",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
-      "collection",
-      "source_span",
-      "string_scanner",
-      "typed_data"
+      "flutter"
     ]
   },
   {
-    "name": "media_kit_video",
-    "version": "1.0.2",
-    "kind": "direct",
+    "name": "media_kit_libs_windows_video",
+    "version": "1.0.9",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter"
+    ]
+  },
+  {
+    "name": "media_kit_libs_macos_video",
+    "version": "1.1.4",
+    "kind": "transitive",
     "source": "hosted",
     "dependencies": [
       "flutter",
-      "media_kit",
-      "ffi",
-      "wakelock",
-      "synchronized",
-      "screen_brightness",
-      "volume_controller",
-      "universal_platform",
       "plugin_platform_interface"
     ]
   },
   {
     "name": "plugin_platform_interface",
-    "version": "2.1.5",
+    "version": "2.1.6",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
       "meta"
+    ]
+  },
+  {
+    "name": "media_kit_libs_ios_video",
+    "version": "1.1.4",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "plugin_platform_interface"
+    ]
+  },
+  {
+    "name": "media_kit_libs_android_video",
+    "version": "1.3.5",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "plugin_platform_interface"
+    ]
+  },
+  {
+    "name": "media_kit_native_event_loop",
+    "version": "1.0.8",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter"
+    ]
+  },
+  {
+    "name": "media_kit_video",
+    "version": "1.2.1",
+    "kind": "direct",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "media_kit",
+      "synchronized",
+      "wakelock_plus",
+      "screen_brightness",
+      "volume_controller",
+      "universal_platform",
+      "plugin_platform_interface"
     ]
   },
   {
@@ -452,73 +517,19 @@
     ]
   },
   {
-    "name": "synchronized",
-    "version": "3.1.0",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": []
-  },
-  {
-    "name": "wakelock",
-    "version": "0.6.2",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "flutter",
-      "meta",
-      "wakelock_macos",
-      "wakelock_platform_interface",
-      "wakelock_web",
-      "wakelock_windows"
-    ]
-  },
-  {
-    "name": "wakelock_windows",
-    "version": "0.2.1",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "flutter",
-      "wakelock_platform_interface",
-      "win32"
-    ]
-  },
-  {
-    "name": "win32",
-    "version": "3.1.4",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "ffi"
-    ]
-  },
-  {
-    "name": "ffi",
-    "version": "2.0.2",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": []
-  },
-  {
-    "name": "wakelock_platform_interface",
-    "version": "0.3.0",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "flutter",
-      "meta"
-    ]
-  },
-  {
-    "name": "wakelock_web",
-    "version": "0.4.0",
+    "name": "wakelock_plus",
+    "version": "1.1.1",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
       "flutter",
       "flutter_web_plugins",
-      "js",
-      "wakelock_platform_interface"
+      "meta",
+      "wakelock_plus_platform_interface",
+      "win32",
+      "dbus",
+      "package_info_plus",
+      "js"
     ]
   },
   {
@@ -528,6 +539,56 @@
     "source": "hosted",
     "dependencies": [
       "meta"
+    ]
+  },
+  {
+    "name": "package_info_plus",
+    "version": "4.1.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "ffi",
+      "flutter",
+      "flutter_web_plugins",
+      "http",
+      "meta",
+      "path",
+      "package_info_plus_platform_interface",
+      "win32"
+    ]
+  },
+  {
+    "name": "package_info_plus_platform_interface",
+    "version": "2.0.1",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "meta",
+      "plugin_platform_interface"
+    ]
+  },
+  {
+    "name": "http",
+    "version": "1.1.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "async",
+      "http_parser",
+      "meta"
+    ]
+  },
+  {
+    "name": "http_parser",
+    "version": "4.0.2",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "collection",
+      "source_span",
+      "string_scanner",
+      "typed_data"
     ]
   },
   {
@@ -546,15 +607,61 @@
     ]
   },
   {
-    "name": "wakelock_macos",
-    "version": "0.4.0",
+    "name": "dbus",
+    "version": "0.7.8",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "args",
+      "ffi",
+      "meta",
+      "xml"
+    ]
+  },
+  {
+    "name": "xml",
+    "version": "6.3.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "collection",
+      "meta",
+      "petitparser"
+    ]
+  },
+  {
+    "name": "petitparser",
+    "version": "5.4.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "meta"
+    ]
+  },
+  {
+    "name": "args",
+    "version": "2.4.2",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": []
+  },
+  {
+    "name": "wakelock_plus_platform_interface",
+    "version": "1.1.0",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
       "flutter",
-      "flutter_web_plugins",
-      "wakelock_platform_interface"
+      "plugin_platform_interface",
+      "meta"
     ]
+  },
+  {
+    "name": "synchronized",
+    "version": "3.1.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": []
   },
   {
     "name": "media_kit",
@@ -633,26 +740,6 @@
     ]
   },
   {
-    "name": "xml",
-    "version": "6.3.0",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "collection",
-      "meta",
-      "petitparser"
-    ]
-  },
-  {
-    "name": "petitparser",
-    "version": "5.4.0",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "meta"
-    ]
-  },
-  {
     "name": "archive",
     "version": "3.4.5",
     "kind": "transitive",
@@ -697,7 +784,7 @@
   },
   {
     "name": "path_provider",
-    "version": "2.0.15",
+    "version": "2.1.1",
     "kind": "direct",
     "source": "hosted",
     "dependencies": [
@@ -711,7 +798,7 @@
   },
   {
     "name": "path_provider_windows",
-    "version": "2.1.7",
+    "version": "2.2.1",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -724,7 +811,7 @@
   },
   {
     "name": "path_provider_platform_interface",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -735,14 +822,14 @@
   },
   {
     "name": "platform",
-    "version": "3.1.0",
+    "version": "3.1.3",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": []
   },
   {
     "name": "path_provider_linux",
-    "version": "2.1.11",
+    "version": "2.2.1",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -755,7 +842,7 @@
   },
   {
     "name": "xdg_directories",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -765,7 +852,7 @@
   },
   {
     "name": "path_provider_foundation",
-    "version": "2.2.4",
+    "version": "2.3.1",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -775,7 +862,7 @@
   },
   {
     "name": "path_provider_android",
-    "version": "2.0.27",
+    "version": "2.2.0",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -906,25 +993,6 @@
     ]
   },
   {
-    "name": "dbus",
-    "version": "0.7.8",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "args",
-      "ffi",
-      "meta",
-      "xml"
-    ]
-  },
-  {
-    "name": "args",
-    "version": "2.4.2",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": []
-  },
-  {
     "name": "nm",
     "version": "0.5.0",
     "kind": "direct",
@@ -945,7 +1013,7 @@
   },
   {
     "name": "shared_preferences",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "kind": "direct",
     "source": "hosted",
     "dependencies": [
@@ -960,7 +1028,7 @@
   },
   {
     "name": "shared_preferences_windows",
-    "version": "2.3.0",
+    "version": "2.3.1",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -974,7 +1042,7 @@
   },
   {
     "name": "shared_preferences_platform_interface",
-    "version": "2.3.0",
+    "version": "2.3.1",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -984,7 +1052,7 @@
   },
   {
     "name": "shared_preferences_web",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -995,7 +1063,7 @@
   },
   {
     "name": "shared_preferences_linux",
-    "version": "2.3.0",
+    "version": "2.3.1",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -1009,7 +1077,7 @@
   },
   {
     "name": "shared_preferences_foundation",
-    "version": "2.3.2",
+    "version": "2.3.4",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -1019,7 +1087,7 @@
   },
   {
     "name": "shared_preferences_android",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -1068,6 +1136,15 @@
     ]
   },
   {
+    "name": "dynamic_layouts",
+    "version": "0.0.1+1",
+    "kind": "direct",
+    "source": "git",
+    "dependencies": [
+      "flutter"
+    ]
+  },
+  {
     "name": "nextcloud",
     "version": "1.0.0",
     "kind": "direct",
@@ -1087,7 +1164,7 @@
   },
   {
     "name": "xml_annotation",
-    "version": "2.2.0",
+    "version": "2.3.0",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
