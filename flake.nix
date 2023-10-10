@@ -29,6 +29,35 @@
           url = "https://github.com/microsoft/mimalloc/archive/refs/tags/v2.1.2.tar.gz";
           hash = "sha256-Kxv/b3F/lyXHC/jXnkeG2hPeiicAWeS6C90mKue+Rus=";
         };
+
+        westonConfig = pkgs.writers.writeText "weston.ini" (generators.toINI {} {
+          shell = {
+            type = "kiosk-shell.so";
+          };
+
+          launcher = [
+            {
+              displayname = "Terminal";
+              path = "${pkgs.weston}/bin/weston-terminal";
+            }
+            {
+              displayname = "Network Manager";
+              path = "${pkgs.weston}/bin/weston-terminal --shell=${pkgs.networkmanager}/bin/nmtui";
+            }
+            {
+              displayname = "Bluetooth Manager";
+              path = "${pkgs.blueman}/bin/blueman-manager";
+            }
+            {
+              displayname = "Serface";
+              path = "${self.packages.${system}.default}/bin/serface";
+            }
+          ];
+
+          input-method = {
+            path = "${pkgs.weston}/libexec/weston-keyboard";
+          };
+        });
       in rec {
         packages.default = pkgs.flutter.buildFlutterApplication {
           pname = "serface";
@@ -151,7 +180,7 @@
 
               services.xserver.displayManager.job.execCmd = ''
                 export PATH=${pkgs.weston}/bin:$PATH
-                exec weston
+                exec weston --config ${westonConfig}
               '';
 
               systemd.services.display-manager = {
