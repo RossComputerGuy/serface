@@ -16,31 +16,11 @@
 
   inputs.nixpkgs.url = github:ExpidusOS/nixpkgs;
 
-  inputs.gokai = {
-    url = github:ExpidusOS/gokai;
-    inputs = {
-      expidus-sdk.follows = "expidus-sdk";
-      nixpkgs.follows = "nixpkgs";
-    };
-  };
-
-  outputs = { self, expidus-sdk, nixpkgs, gokai }:
+  outputs = { self, expidus-sdk, nixpkgs }:
     with expidus-sdk.lib;
     flake-utils.eachSystem flake-utils.allSystems (system:
       let
-        pkgs = expidus-sdk.legacyPackages.${system}.appendOverlays [
-          (_: _: {
-            gokai = gokai.packages.${system}.sdk;
-            gokai-debug = gokai.packages.${system}.sdk-debug;
-            path = nixpkgs.outPath;
-          })
-        ];
-
-        flutter-engine = pkgs.runCommand pkgs.flutter-engine.name {} ''
-          mkdir -p $out/src
-          find ${pkgs.flutter-engine.src}/src -maxdepth 1 -mindepth 1 -exec ln -sf {} $out/src \;
-          ln -s ${pkgs.flutter-engine}/out $out/src/out
-        '';
+        pkgs = expidus-sdk.legacyPackages.${system};
       in {
         packages.default = pkgs.flutter.buildFlutterApplication {
           pname = "serface";
@@ -49,19 +29,10 @@
           src = cleanSource self;
 
           depsListFile = ./deps.json;
-          vendorHash = "sha256-3oX5yGWkxHnH1WGNKfKhLI22Hf0nTaOQ8LS52iBTUAc=";
-
-          flutterBuildFlags = [
-            "--local-engine=${flutter-engine}/src/out/host_release"
-            "--local-engine-src-path=${flutter-engine}/src"
-          ];
+          vendorHash = "sha256-IepOeCUzFbu+AVrov107vxmyNyGcOQhN6TJqIxJf6Bk=";
 
           nativeBuildInputs = with pkgs; [
             pkg-config
-          ];
-
-          buildInputs = with pkgs; [
-            pkgs.gokai
           ];
 
           meta = {
@@ -83,14 +54,7 @@
 
           packages = with pkgs; [
             flutter
-            pkg-config
-            pkgs.gokai-debug
-            gdb
           ];
-
-          LIBGL_DRIVERS_PATH = "${pkgs.mesa.drivers}/lib/dri";
-          VK_LAYER_PATH = "${pkgs.vulkan-validation-layers}/share/vulkan/explicit_layer.d";
-          FLUTTER_ENGINE = "${flutter-engine}/src";
         };
       });
 }

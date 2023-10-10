@@ -1,8 +1,7 @@
 import 'dart:async';
-import 'package:serface/models.dart';
 import 'package:flutter/material.dart';
-import 'package:gokai/devices/power.dart';
 import 'package:provider/provider.dart';
+import 'package:upower/upower.dart';
 
 class BatteryIndicator extends StatefulWidget {
   const BatteryIndicator({
@@ -12,7 +11,7 @@ class BatteryIndicator extends StatefulWidget {
     this.withLabel = true,
   });
 
-  final GokaiPowerDevice device;
+  final UPowerDevice device;
   final bool withIcon;
   final bool withLabel;
 
@@ -42,8 +41,8 @@ class _BatteryIndicatorState extends State<BatteryIndicator> {
   }
 
   void _update() async {
-    final level = await widget.device.level;
-    final isCharging = await widget.device.isCharging;
+    final level = widget.device.percentage / 100;
+    final isCharging = widget.device.state == UPowerDeviceState.charging;
 
     setState(() {
       _level = level;

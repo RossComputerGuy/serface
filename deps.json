@@ -6,18 +6,18 @@
     "source": "root",
     "dependencies": [
       "flutter",
-      "gokai",
       "nextcloud",
-      "cupertino_icons",
       "ionicons",
       "intl",
       "provider",
       "shared_preferences",
-      "shared_preferences_linux",
       "path_provider",
       "path",
       "file",
       "nm",
+      "upower",
+      "media_kit",
+      "youtube_explode_dart",
       "flutter_test",
       "flutter_lints",
       "dynamite_runtime"
@@ -56,7 +56,7 @@
   },
   {
     "name": "collection",
-    "version": "1.17.1",
+    "version": "1.17.2",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": []
@@ -128,6 +128,7 @@
     "dependencies": [
       "flutter",
       "test_api",
+      "matcher",
       "path",
       "fake_async",
       "clock",
@@ -137,15 +138,21 @@
       "boolean_selector",
       "characters",
       "collection",
-      "js",
-      "matcher",
       "material_color_utilities",
       "meta",
       "source_span",
       "stream_channel",
       "string_scanner",
-      "term_glyph"
+      "term_glyph",
+      "web"
     ]
+  },
+  {
+    "name": "web",
+    "version": "0.1.4-beta",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": []
   },
   {
     "name": "term_glyph",
@@ -165,7 +172,7 @@
   },
   {
     "name": "source_span",
-    "version": "1.9.1",
+    "version": "1.10.0",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": [
@@ -202,50 +209,19 @@
   },
   {
     "name": "material_color_utilities",
-    "version": "0.2.0",
+    "version": "0.5.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "collection"
+    ]
+  },
+  {
+    "name": "characters",
+    "version": "1.3.0",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": []
-  },
-  {
-    "name": "matcher",
-    "version": "0.12.15",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "async",
-      "meta",
-      "stack_trace",
-      "term_glyph",
-      "test_api"
-    ]
-  },
-  {
-    "name": "test_api",
-    "version": "0.5.1",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "async",
-      "boolean_selector",
-      "collection",
-      "meta",
-      "source_span",
-      "stack_trace",
-      "stream_channel",
-      "string_scanner",
-      "term_glyph",
-      "matcher"
-    ]
-  },
-  {
-    "name": "stack_trace",
-    "version": "1.11.0",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "path"
-    ]
   },
   {
     "name": "boolean_selector",
@@ -258,27 +234,20 @@
     ]
   },
   {
-    "name": "js",
-    "version": "0.6.7",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "meta"
-    ]
-  },
-  {
-    "name": "characters",
-    "version": "1.3.0",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": []
-  },
-  {
     "name": "vector_math",
     "version": "2.1.4",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": []
+  },
+  {
+    "name": "stack_trace",
+    "version": "1.11.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "path"
+    ]
   },
   {
     "name": "clock",
@@ -298,6 +267,36 @@
     ]
   },
   {
+    "name": "matcher",
+    "version": "0.12.16",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "async",
+      "meta",
+      "stack_trace",
+      "term_glyph",
+      "test_api"
+    ]
+  },
+  {
+    "name": "test_api",
+    "version": "0.6.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "async",
+      "boolean_selector",
+      "collection",
+      "meta",
+      "source_span",
+      "stack_trace",
+      "stream_channel",
+      "string_scanner",
+      "term_glyph"
+    ]
+  },
+  {
     "name": "flutter",
     "version": "0.0.0",
     "kind": "direct",
@@ -305,10 +304,10 @@
     "dependencies": [
       "characters",
       "collection",
-      "js",
       "material_color_utilities",
       "meta",
       "vector_math",
+      "web",
       "sky_engine"
     ]
   },
@@ -320,22 +319,17 @@
     "dependencies": []
   },
   {
-    "name": "nm",
-    "version": "0.5.0",
+    "name": "youtube_explode_dart",
+    "version": "2.0.2",
     "kind": "direct",
     "source": "hosted",
     "dependencies": [
-      "dbus"
-    ]
-  },
-  {
-    "name": "dbus",
-    "version": "0.7.8",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "args",
-      "ffi",
+      "collection",
+      "freezed_annotation",
+      "html",
+      "http",
+      "http_parser",
+      "json_annotation",
       "meta",
       "xml"
     ]
@@ -361,6 +355,219 @@
     ]
   },
   {
+    "name": "json_annotation",
+    "version": "4.8.1",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "meta"
+    ]
+  },
+  {
+    "name": "http_parser",
+    "version": "4.0.2",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "collection",
+      "source_span",
+      "string_scanner",
+      "typed_data"
+    ]
+  },
+  {
+    "name": "http",
+    "version": "1.1.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "async",
+      "http_parser",
+      "meta"
+    ]
+  },
+  {
+    "name": "html",
+    "version": "0.15.4",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "csslib",
+      "source_span"
+    ]
+  },
+  {
+    "name": "csslib",
+    "version": "1.0.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "source_span"
+    ]
+  },
+  {
+    "name": "freezed_annotation",
+    "version": "2.4.1",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "collection",
+      "json_annotation",
+      "meta"
+    ]
+  },
+  {
+    "name": "media_kit",
+    "version": "1.1.8+2",
+    "kind": "direct",
+    "source": "hosted",
+    "dependencies": [
+      "meta",
+      "path",
+      "image",
+      "uri_parser",
+      "collection",
+      "synchronized",
+      "uuid",
+      "http",
+      "safe_local_storage",
+      "universal_platform",
+      "js"
+    ]
+  },
+  {
+    "name": "js",
+    "version": "0.6.7",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "meta"
+    ]
+  },
+  {
+    "name": "universal_platform",
+    "version": "1.0.0+1",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": []
+  },
+  {
+    "name": "safe_local_storage",
+    "version": "1.0.2",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "path",
+      "synchronized"
+    ]
+  },
+  {
+    "name": "synchronized",
+    "version": "3.1.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": []
+  },
+  {
+    "name": "uuid",
+    "version": "4.1.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "crypto",
+      "sprintf"
+    ]
+  },
+  {
+    "name": "sprintf",
+    "version": "7.0.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": []
+  },
+  {
+    "name": "crypto",
+    "version": "3.0.3",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "typed_data"
+    ]
+  },
+  {
+    "name": "uri_parser",
+    "version": "2.0.2",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "path",
+      "safe_local_storage"
+    ]
+  },
+  {
+    "name": "image",
+    "version": "4.1.3",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "archive",
+      "meta",
+      "xml"
+    ]
+  },
+  {
+    "name": "archive",
+    "version": "3.4.5",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "crypto",
+      "path",
+      "pointycastle"
+    ]
+  },
+  {
+    "name": "pointycastle",
+    "version": "3.7.3",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "collection",
+      "convert",
+      "js"
+    ]
+  },
+  {
+    "name": "convert",
+    "version": "3.1.1",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "typed_data"
+    ]
+  },
+  {
+    "name": "upower",
+    "version": "0.7.0",
+    "kind": "direct",
+    "source": "hosted",
+    "dependencies": [
+      "dbus"
+    ]
+  },
+  {
+    "name": "dbus",
+    "version": "0.7.8",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "args",
+      "ffi",
+      "meta",
+      "xml"
+    ]
+  },
+  {
     "name": "ffi",
     "version": "2.0.2",
     "kind": "transitive",
@@ -373,6 +580,15 @@
     "kind": "transitive",
     "source": "hosted",
     "dependencies": []
+  },
+  {
+    "name": "nm",
+    "version": "0.5.0",
+    "kind": "direct",
+    "source": "hosted",
+    "dependencies": [
+      "dbus"
+    ]
   },
   {
     "name": "file",
@@ -491,30 +707,6 @@
     ]
   },
   {
-    "name": "shared_preferences_linux",
-    "version": "2.3.0",
-    "kind": "direct",
-    "source": "hosted",
-    "dependencies": [
-      "file",
-      "flutter",
-      "path",
-      "path_provider_linux",
-      "path_provider_platform_interface",
-      "shared_preferences_platform_interface"
-    ]
-  },
-  {
-    "name": "shared_preferences_platform_interface",
-    "version": "2.3.0",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "flutter",
-      "plugin_platform_interface"
-    ]
-  },
-  {
     "name": "shared_preferences",
     "version": "2.2.0",
     "kind": "direct",
@@ -544,6 +736,16 @@
     ]
   },
   {
+    "name": "shared_preferences_platform_interface",
+    "version": "2.3.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "flutter",
+      "plugin_platform_interface"
+    ]
+  },
+  {
     "name": "shared_preferences_web",
     "version": "2.2.0",
     "kind": "transitive",
@@ -561,12 +763,26 @@
     "source": "sdk",
     "dependencies": [
       "flutter",
-      "js",
       "characters",
       "collection",
       "material_color_utilities",
       "meta",
-      "vector_math"
+      "vector_math",
+      "web"
+    ]
+  },
+  {
+    "name": "shared_preferences_linux",
+    "version": "2.3.0",
+    "kind": "transitive",
+    "source": "hosted",
+    "dependencies": [
+      "file",
+      "flutter",
+      "path",
+      "path_provider_linux",
+      "path_provider_platform_interface",
+      "shared_preferences_platform_interface"
     ]
   },
   {
@@ -630,13 +846,6 @@
     ]
   },
   {
-    "name": "cupertino_icons",
-    "version": "1.0.5",
-    "kind": "direct",
-    "source": "hosted",
-    "dependencies": []
-  },
-  {
     "name": "nextcloud",
     "version": "1.0.0",
     "kind": "direct",
@@ -683,65 +892,6 @@
   {
     "name": "asn1lib",
     "version": "1.5.0",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": []
-  },
-  {
-    "name": "pointycastle",
-    "version": "3.7.3",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "collection",
-      "convert",
-      "js"
-    ]
-  },
-  {
-    "name": "convert",
-    "version": "3.1.1",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "typed_data"
-    ]
-  },
-  {
-    "name": "crypto",
-    "version": "3.0.3",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "typed_data"
-    ]
-  },
-  {
-    "name": "gokai",
-    "version": "0.0.1",
-    "kind": "direct",
-    "source": "git",
-    "dependencies": [
-      "event",
-      "flutter",
-      "flutter_web_plugins",
-      "plugin_platform_interface",
-      "vector_math",
-      "arena_listener"
-    ]
-  },
-  {
-    "name": "arena_listener",
-    "version": "0.0.2",
-    "kind": "transitive",
-    "source": "hosted",
-    "dependencies": [
-      "flutter"
-    ]
-  },
-  {
-    "name": "event",
-    "version": "2.1.2",
     "kind": "transitive",
     "source": "hosted",
     "dependencies": []

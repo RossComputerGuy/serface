@@ -1,9 +1,9 @@
-import 'package:serface/models.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:upower/upower.dart';
 import 'battery_indicator.dart';
 
-class BatteryBar extends StatelessWidget {
+class BatteryBar extends StatefulWidget {
   const BatteryBar({
     super.key,
     this.direction = Axis.vertical,
@@ -12,19 +12,37 @@ class BatteryBar extends StatelessWidget {
   final Axis direction;
 
   @override
-  Widget build(BuildContext context) =>
-    Consumer<BatteryModel>(
-      builder: (context, model, child) {
-        if (model.integratedItems.isEmpty) {
-          return const SizedBox();
-        }
+  State<BatteryBar> createState() => _BatteryBarState();
+}
 
-        return Flex(
-          direction: direction,
-          children: model.integratedItems.map(
-            (device) => BatteryIndicator(device: device)
-          ).toList(),
-        );
-      },
+class _BatteryBarState extends State<BatteryBar> {
+  var _client = UPowerClient();
+  List<UPowerDevice> _devices = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    _client.connect().then((_) {
+      setState(() {
+        _devices = _client.devices
+          ..removeWhere((d) => d.type != UPowerDeviceType.battery);
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _client.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) =>
+    Flex(
+      direction: widget.direction,
+      children: _devices.map((device) =>
+        BatteryIndicator(device: device)
+      ).toList(),
     );
 }
