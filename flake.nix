@@ -10,7 +10,7 @@
   };
 
   inputs.expidus-sdk = {
-    url = github:ExpidusOS/sdk;
+    url = github:ExpidusOS/sdk/devel/2023-10;
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -32,23 +32,32 @@
 
         westonConfig = pkgs.writers.writeText "weston.ini" ''
           [shell]
-          type=kiosk-shell.so
+          type=desktop-shell.so
 
           [launcher]
           displayname=Terminal
           path=${pkgs.weston}/bin/weston-terminal
+          icon=${pkgs.gnome-icon-theme}/share/icons/gnome/24x24/apps/gnome-terminal.png
 
           [launcher]
           displayname=Network Manager
           path=${pkgs.weston}/bin/weston-terminal --shell=${pkgs.networkmanager}/bin/nmtui
+          icon=${pkgs.gnome-icon-theme}/share/icons/gnome/24x24/categories/package_network.png
 
           [launcher]
           displayname=Bluetooth Manager
           path=${pkgs.blueman}/bin/blueman-manager
+          icon=${pkgs.blueman}/share/icons/hicolor/24x24/apps/blueman.png
+
+          [launcher]
+          displayname=Sound Manager
+          path=${pkgs.pavucontrol}/bin/pavucontrol
+          icon=${pkgs.gnome-icon-theme}/share/icons/gnome/24x24/devices/audio-speakers.png
 
           [launcher]
           displayname=Serface
           path=${self.packages.${system}.default}/bin/serface
+          icon=${pkgs.gnome-icon-theme}/share/icons/gnome/24x24/categories/gnome-applications.png
 
           [input-method]
           path=${pkgs.weston}/libexec/weston-keyboard
@@ -102,10 +111,6 @@
 
           modules = [
             {
-              disabledModules = [
-                "${expidus-sdk}/variants/mainline/modules/system/config.nix"
-              ];
-
               fileSystems = {
                 "/" = {
                   device = "/dev/disk/by-label/EXPIDUS_ROOT";
@@ -140,11 +145,17 @@
               users.users.serface = {
                 password = "serface";
                 isNormalUser = true;
-                home = "/home/expidus";
+                home = "/home/serface";
                 description = "Serface Tablet";
                 group = "wheel";
                 extraGroups = [ "video" "input" "tty" "users" "systemd-journal" ];
               };
+
+              security.polkit.extraConfig = ''
+                polkit.addRule(function(action, subject) {
+                  return polkit.Result.YES;
+                });
+              '';
 
               hardware.opengl.enable = true;
 
@@ -156,6 +167,8 @@
                   wlr.enable = true;
                 };
               };
+
+              time.timeZone = "America/New_York";
 
               networking = {
                 networkmanager.enable = true;
@@ -172,9 +185,11 @@
               security.apparmor.enable = true;
               services.dbus.apparmor = "enabled";
               services.getty.autologinUser = "serface";
+              hardware.bluetooth.enable = true;
 
               services.xserver.displayManager.job.execCmd = ''
                 export PATH=${pkgs.weston}/bin:$PATH
+                export HOME=/home/serface
                 exec weston --config ${westonConfig}
               '';
 

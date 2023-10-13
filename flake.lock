@@ -26,15 +26,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1696307625,
-        "narHash": "sha256-LkhuVw0V7jx2h+PGizmAaLXXpp9ulYzuxnv0n4G6/Q0=",
+        "lastModified": 1697169129,
+        "narHash": "sha256-mUzMs4Xs+PXBar4X33DGhzbV8PVBrioSVheomlNiS5c=",
         "owner": "ExpidusOS",
         "repo": "sdk",
-        "rev": "909c53da1a4176aaa47c4bdf326344f2f9db2865",
+        "rev": "468eab2d5629072151142e2fc0d8a6d951e38755",
         "type": "github"
       },
       "original": {
         "owner": "ExpidusOS",
+        "ref": "devel/2023-10",
         "repo": "sdk",
         "type": "github"
       }
