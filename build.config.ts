@@ -1,7 +1,6 @@
 import copy from 'rollup-plugin-copy-enhanced';
 import builtins from 'rollup-plugin-node-builtins';
 import globals from 'rollup-plugin-node-globals';
-import { babel } from '@rollup/plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import tailwind from 'tailwindcss';
 import { defineBuildConfig } from 'unbuild';
@@ -20,6 +19,8 @@ export default defineBuildConfig([
       },
       esbuild: {
         minify: true,
+        jsxFactory: 'h',
+        jsxImportSource: 'hyperapp-jsx-pragma',
       },
       emitCJS: true,
     },
@@ -50,6 +51,8 @@ export default defineBuildConfig([
       },
       esbuild: {
         minify: true,
+        jsxFactory: 'h',
+        jsxImportSource: 'hyperapp-jsx-pragma',
       },
     },
     hooks: {
@@ -70,7 +73,6 @@ export default defineBuildConfig([
           globals(),
           builtins(),
           ...options.plugins,
-          babel({ babelHelpers: 'bundled' }),
         ];
       },
     },
